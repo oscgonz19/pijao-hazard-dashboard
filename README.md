@@ -1,6 +1,8 @@
 # Pijao Landslide Hazard Dashboard
 
 Dashboard interactivo para visualización y análisis de amenaza por movimientos en masa en corredores viales. Desarrollado para el corredor Pijao, Quindío, Colombia.
+<img width="1895" height="905" alt="image" src="https://github.com/user-attachments/assets/13a7c604-297f-440d-9614-47e975ae2367" />
+
 
 ## Características
 
@@ -10,8 +12,10 @@ Dashboard interactivo para visualización y análisis de amenaza por movimientos
 - **Estadísticas y KPIs**: distribución de amenaza, puntos críticos, FS mínimo/máximo
 - **Filtros dinámicos**: amenaza mínima, Top N puntos, opacidad de capas
 - **Popups informativos**: FS, clase de amenaza, umbral aplicado
+<img width="1592" height="726" alt="image" src="https://github.com/user-attachments/assets/341162be-8229-4427-9d81-4e85d53486d1" />
 
 ## Clasificación de Amenaza
+<img width="1904" height="859" alt="image" src="https://github.com/user-attachments/assets/c870562f-3801-4746-a91c-23b6994d607c" />
 
 Basada en el Factor de Seguridad (FS) según metodología INVÍAS/SGC:
 
@@ -24,6 +28,7 @@ Basada en el Factor de Seguridad (FS) según metodología INVÍAS/SGC:
 | FS ≥ 2.0 | 1 | MUY BAJA | 🟢 Verde oscuro |
 
 > **Umbral crítico**: FS < 1.0 indica talud inestable que requiere intervención inmediata.
+<img width="1899" height="906" alt="image" src="https://github.com/user-attachments/assets/a5f370e1-d793-47d7-9e39-5685a6935c91" />
 
 ## Instalación
 
