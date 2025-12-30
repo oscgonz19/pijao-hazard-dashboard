@@ -1,5 +1,5 @@
 # Mountain Road Geotechnical Hazard Assessment
-  ##     Pijao, Colombia
+  ##    Pijao-Quindio, Colombia
 
 **Applied geoscience + risk evaluation for mountain road infrastructure**
 *Data anonymized — methodology and approach showcase*
