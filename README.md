@@ -84,6 +84,7 @@ pijao/
         ├── voronoi.gpkg        # Polígonos de zonificación
         └── raster_amenaza.tif  # Raster de amenaza (clases 1-5)
 ```
+<img width="1911" height="1020" alt="image" src="https://github.com/user-attachments/assets/23aec011-d23b-42c1-9144-421e027823bc" />
 
 ## Uso
 
