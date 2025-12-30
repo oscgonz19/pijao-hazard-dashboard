@@ -1,3 +1,5 @@
+*[Leer en Español](README_ES.md)*
+
 # Mountain Road Geotechnical Hazard Assessment
   ##    Pijao-Quindio, Colombia
 
