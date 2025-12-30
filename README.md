@@ -1,210 +1,320 @@
-# Pijao Landslide Hazard Dashboard
+# Mountain Road Geotechnical Hazard Assessment
+## Andean Corridor, Colombia
 
-Dashboard interactivo para visualización y análisis de amenaza por movimientos en masa en corredores viales. Desarrollado para el corredor Pijao, Quindío, Colombia.
-<img width="1895" height="905" alt="image" src="https://github.com/user-attachments/assets/13a7c604-297f-440d-9614-47e975ae2367" />
+**Applied geoscience + risk evaluation for mountain road infrastructure**
+*Data anonymized — methodology and approach showcase*
 
+<img width="1895" alt="Dashboard Overview" src="https://github.com/user-attachments/assets/13a7c604-297f-440d-9614-47e975ae2367" />
 
-## Características
+---
 
-- **Mapa interactivo** con capas toggleables (Raster IDW, Voronoi, Corredor, Puntos críticos)
-- **Detección automática** de tipo de raster (discreto vs continuo) con reclasificación en caliente
-- **Soporte multi-región**: estructura `data/<region>/` para múltiples corredores
-- **Estadísticas y KPIs**: distribución de amenaza, puntos críticos, FS mínimo/máximo
-- **Filtros dinámicos**: amenaza mínima, Top N puntos, opacidad de capas
-- **Popups informativos**: FS, clase de amenaza, umbral aplicado
-<img width="1592" height="726" alt="image" src="https://github.com/user-attachments/assets/341162be-8229-4427-9d81-4e85d53486d1" />
+## Context
 
-## Clasificación de Amenaza
-<img width="1904" height="859" alt="image" src="https://github.com/user-attachments/assets/c870562f-3801-4746-a91c-23b6994d607c" />
+Mountain road corridors in the Colombian Andes face persistent challenges from mass movement phenomena. Steep slopes exceeding 50% gradient, highly weathered volcanic soils, and annual precipitation above 2,500 mm create conditions where landslides, erosion, and slope failures regularly disrupt critical rural connectivity.
 
-Basada en el Factor de Seguridad (FS) según metodología INVÍAS/SGC:
+This project addressed geotechnical hazard assessment for a strategic road corridor serving isolated mountain communities. The road represents the sole access route for agricultural production and essential services, making its stability a matter of both economic viability and public safety.
 
-| Rango FS | Clase | Amenaza | Color |
-|----------|-------|---------|-------|
-| FS < 1.0 | 5 | MUY ALTA | 🔴 Rojo |
-| 1.0 ≤ FS < 1.2 | 4 | ALTA | 🟠 Naranja |
-| 1.2 ≤ FS < 1.5 | 3 | MEDIA | 🟡 Amarillo |
-| 1.5 ≤ FS < 2.0 | 2 | BAJA | 🟢 Verde claro |
-| FS ≥ 2.0 | 1 | MUY BAJA | 🟢 Verde oscuro |
+The study integrated geological, hydrogeological, and geotechnical analyses to identify critical points requiring intervention, classify hazard levels along the corridor, and provide engineering recommendations for slope stabilization and drainage design. The work followed Colombian technical standards (INVÍAS Manual de Estabilidad de Taludes, SGC Guía Metodológica para Estudios de Amenaza) and produced actionable outputs for infrastructure decision-making.
 
-> **Umbral crítico**: FS < 1.0 indica talud inestable que requiere intervención inmediata.
-<img width="1899" height="906" alt="image" src="https://github.com/user-attachments/assets/a5f370e1-d793-47d7-9e39-5685a6935c91" />
+---
 
-## Instalación
+## My Role
 
-### 1. Crear ambiente conda
+- Conducted **geological and hydrogeological evaluation** for a mountain road corridor, characterizing lithological units, structural features, and groundwater conditions
+- Performed **multitemporal satellite analysis** (Landsat 5/7/8, Sentinel-2) to track vegetation dynamics and identify terrain changes over 30+ years
+- Built a **hazard classification framework** based on Factor of Safety (FS) calculations, integrating geotechnical parameters with spatial analysis
+- Developed **GIS-based risk assessment tools** including IDW interpolation, Voronoi tessellation, and automated raster processing pipelines
+- Created an **interactive visualization dashboard** for stakeholder communication and technical decision support
+- Produced **technical reports** synthesizing field observations, remote sensing analysis, and geotechnical modeling for engineering oversight
 
-```bash
-conda create -n pijao_dashboard python=3.11 -y
-conda activate pijao_dashboard
+---
+
+## Scope of Work
+
+### Geology
+- Regional geological context: metamorphic basement, Cretaceous volcano-sedimentary sequences, Plio-Pleistocene volcanic deposits
+- Structural analysis: fault systems, foliation patterns, tectonic controls on slope stability
+- Field reconnaissance: outcrop documentation, material characterization, weathering profiles
+- Slope morphology: identification of landslide deposits, debris flows, erosion features
+
+### Hydrogeology
+- Characterization of hydrogeological units by infiltration capacity, storage, and hydraulic conductivity
+- Identification of springs, seeps, and saturation zones affecting slope stability
+- Conceptual groundwater flow model: recharge, transit, and discharge zones
+- Drainage recommendations for surface and subsurface water management
+
+### Hazard Analysis
+- Factor of Safety calculation using limit equilibrium methods
+- Spatial interpolation of geotechnical parameters across the corridor
+- Hazard zonation following standardized classification thresholds
+- Integration of conditioning factors: lithology, slope, rainfall, seismicity
+
+### Vulnerability & Risk
+- Inventory of exposed elements: road infrastructure, drainage structures, retaining walls
+- Vulnerability assessment using fragility matrix methodology
+- Risk classification combining hazard probability with consequence severity
+- Prioritization framework for intervention planning
+
+---
+
+## Methodology
+
+### Data Integration Approach
+
+The analysis combined multiple data sources into a unified spatial framework:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    DATA INTEGRATION PIPELINE                     │
+├─────────────────────────────────────────────────────────────────┤
+│  FIELD DATA          REMOTE SENSING       SECONDARY SOURCES     │
+│  ─────────────       ──────────────       ─────────────────     │
+│  • Outcrop logs      • Landsat archive    • Geological maps     │
+│  • GPS waypoints     • Sentinel-2 MSI     • Hydrogeological     │
+│  • Geotechnical      • DEM (12.5m)          cartography         │
+│    parameters        • Slope/aspect       • Climate records     │
+│  • Photo records     • NDVI time series   • Seismic zonation    │
+│                                                                  │
+│                          ↓                                       │
+│              ┌─────────────────────────┐                        │
+│              │   GIS SPATIAL ANALYSIS   │                        │
+│              │   • CRS alignment        │                        │
+│              │   • Raster/vector ops    │                        │
+│              │   • Interpolation        │                        │
+│              │   • Classification       │                        │
+│              └─────────────────────────┘                        │
+│                          ↓                                       │
+│              ┌─────────────────────────┐                        │
+│              │   HAZARD ZONATION MAP   │                        │
+│              └─────────────────────────┘                        │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-### 2. Instalar dependencias geoespaciales (recomendado vía conda)
+### Geotechnical Analysis
+
+Factor of Safety (FS) was calculated for critical points using infinite slope and limit equilibrium methods. The continuous FS values were then spatially interpolated using Inverse Distance Weighting (IDW) to generate a hazard surface across the corridor buffer zone.
+
+**Key methodological decisions:**
+- Interpolate continuous FS values first, then reclassify to discrete hazard classes (more defensible than interpolating categories)
+- Use Voronoi tessellation with phantom boundary points to ensure complete coverage
+- Apply corridor buffer to focus analysis on the zone of influence
+
+### Multitemporal Analysis
+
+Satellite imagery spanning 1990–2024 was processed to detect vegetation changes indicative of slope instability:
+
+- **Spectral indices**: NDVI (vegetation vigor), NBR (burn/disturbance detection)
+- **Quality filtering**: Cloud masking, dry season composites
+- **Sensor fusion**: Harmonized Landsat-Sentinel time series
+- **Change detection**: Period-over-period differencing with threshold classification
+
+The analysis monitored 24 critical points across the corridor, tracking vegetation dynamics over 30+ years:
+
+<p align="center">
+  <img src="assets/multitemporal/ndvi_time_series.png" alt="NDVI Time Series" width="700"/>
+  <br><em>NDVI time series for all monitoring points (1990s–Present)</em>
+</p>
+
+<p align="center">
+  <img src="assets/multitemporal/ndvi_change_total.png" alt="Total NDVI Change" width="700"/>
+  <br><em>Cumulative vegetation change map (1990s vs Present)</em>
+</p>
+
+**Key findings from multitemporal analysis:**
+- 90-99% of monitoring points show significant vegetation recovery
+- Post-disturbance regeneration patterns detected via dNBR
+- Change magnitudes >1.0 NDVI indicate major landscape transformations
+
+> The complete Google Earth Engine analysis is available in [`multitemporal_analysis.ipynb`](multitemporal_analysis.ipynb)
+
+### Classification Framework
+
+Hazard levels follow Colombian national standards with five classes based on Factor of Safety thresholds:
+
+| FS Range | Class | Hazard Level | Interpretation |
+|----------|-------|--------------|----------------|
+| FS < 1.0 | 5 | VERY HIGH | Unstable - immediate intervention required |
+| 1.0 ≤ FS < 1.2 | 4 | HIGH | Marginally stable - priority intervention |
+| 1.2 ≤ FS < 1.5 | 3 | MEDIUM | Conditionally stable - monitoring needed |
+| 1.5 ≤ FS < 2.0 | 2 | LOW | Stable under normal conditions |
+| FS ≥ 2.0 | 1 | VERY LOW | Stable - routine maintenance |
+
+<img width="1904" alt="Hazard Classification" src="https://github.com/user-attachments/assets/c870562f-3801-4746-a91c-23b6994d607c" />
+
+---
+
+## Data & Tools
+
+### Software Stack
+- **QGIS**: Primary GIS platform for spatial analysis and cartographic production
+- **Python**: Automated processing pipelines (geopandas, rasterio, scipy, numpy)
+- **Google Earth Engine**: Multitemporal satellite image processing at scale
+- **Streamlit**: Interactive dashboard development for stakeholder visualization
+
+### Spatial Analysis Techniques
+- DEM-derived terrain parameters (slope, aspect, curvature)
+- IDW interpolation for continuous surface generation
+- Voronoi tessellation for zone delineation
+- Raster algebra for hazard reclassification
+- Buffer analysis for corridor zone of influence
+
+### Data Products Generated
+- Continuous hazard raster (GeoTIFF)
+- Hazard zone polygons (GeoPackage)
+- Multitemporal change maps
+- Technical cartography
+- Statistical summaries and KPIs
+
+---
+
+## Risk Assessment Framework
+
+### Hazard → Vulnerability → Risk
+
+The assessment follows the standard risk equation:
+
+```
+Risk = Hazard × Vulnerability × Exposure
+```
+
+**Hazard (H)**: Probability of mass movement occurrence, derived from Factor of Safety analysis and historical precedent.
+
+**Vulnerability (V)**: Fragility of exposed elements, assessed through:
+- Structural condition of road infrastructure
+- Presence/absence of drainage systems
+- Retaining wall effectiveness
+- Previous damage history
+
+**Exposure (E)**: Elements at risk within the hazard zone:
+- Road segments and pavement
+- Culverts and drainage structures
+- Retaining walls and slope protection
+- Adjacent infrastructure
+
+### Prioritization Matrix
+
+Risk classification enables resource allocation:
+
+| Risk Level | Interpretation | Action |
+|------------|----------------|--------|
+| HIGH | Unacceptable risk | Immediate structural intervention |
+| MEDIUM | Significant risk | Planned intervention + monitoring |
+| LOW | Acceptable risk | Routine maintenance |
+
+<img width="1899" alt="Risk Analysis" src="https://github.com/user-attachments/assets/a5f370e1-d793-47d7-9e39-5685a6935c91" />
+
+---
+
+## Results
+
+### Key Findings
+
+- Identified multiple sectors with FS < 1.0 requiring immediate stabilization
+- Correlated hydrogeological conditions (springs, seepage zones) with highest-hazard areas
+- Detected vegetation loss patterns in satellite record preceding documented slope failures
+- Mapped structural controls (fault-parallel drainage) influencing instability distribution
+
+### Decision Support Outputs
+
+The analysis produced actionable deliverables:
+
+1. **Prioritized intervention list** ranking critical points by risk level and estimated intervention cost
+2. **Hazard zonation maps** at corridor and site scales for engineering design
+3. **Drainage recommendations** based on hydrogeological characterization
+4. **Monitoring protocol** specifying locations, methods, and trigger thresholds
+
+### Technical Insights
+
+- Weathered volcanic deposits showed highest susceptibility, particularly where groundwater discharge occurs at slope faces
+- Multitemporal NDVI analysis proved effective for identifying incipient instability before visible scarps develop
+- IDW interpolation of continuous FS values produced more realistic hazard surfaces than categorical approaches
+
+---
+
+## Why This Project Matters
+
+### Infrastructure Resilience
+Mountain roads in developing regions often represent the only connection between rural communities and markets, healthcare, and education. Understanding and mitigating geotechnical hazards directly impacts livelihoods and access to essential services.
+
+### Applied Geoscience
+This project demonstrates the integration of classical geological field methods with modern remote sensing and GIS analysis. The combination enables both site-specific understanding and corridor-scale hazard mapping.
+
+### Risk-Informed Decision Making
+By quantifying hazard and risk, technical studies like this enable rational resource allocation. Limited budgets can be directed to highest-priority interventions rather than reactive emergency response.
+
+### Transferable Methodology
+The analytical framework developed here—field reconnaissance, satellite time series, spatial interpolation, hazard classification—applies to mountain road corridors throughout the Andes and similar tropical mountain environments globally.
+
+---
+
+## Interactive Dashboard
+
+The project includes a Streamlit-based visualization tool for exploring hazard data:
+
+<img width="1592" alt="Dashboard Features" src="https://github.com/user-attachments/assets/341162be-8229-4427-9d81-4e85d53486d1" />
+
+### Features
+- Interactive map with toggleable layers (raster, Voronoi zones, critical points)
+- Automatic raster type detection (discrete classes vs continuous FS)
+- Statistics and KPI dashboard
+- Methodology documentation
+
+<img width="1916" alt="Dashboard Statistics" src="https://github.com/user-attachments/assets/9f340b6e-f651-4bca-8874-4098c2fc231e" />
+
+### Quick Start
 
 ```bash
+# Setup environment
+conda create -n hazard_dashboard python=3.11 -y
+conda activate hazard_dashboard
 conda install -c conda-forge geopandas rasterio -y
-```
-
-### 3. Instalar Streamlit y Folium
-
-```bash
 pip install streamlit streamlit-folium folium pillow
-```
 
-### 4. Verificar instalación
-
-```bash
-python -c "import streamlit; import folium; import geopandas; import rasterio; print('OK')"
-```
-
-## Estructura del Proyecto
-
-```
-pijao/
-├── Home.py                     # Página principal (overview)
-├── config.py                   # Fuente única de verdad (umbrales, colores)
-├── requirements.txt            # Dependencias Python
-├── mapa_amenaza_pijao.py       # Motor de cálculo offline
-│
-├── pages/
-│   ├── 1_Estadisticas.py       # KPIs y estadísticas
-│   ├── 2_Mapa.py               # Mapa interactivo Folium
-│   └── 3_Metodologia.py        # Documentación técnica
-│
-├── utils/
-│   ├── __init__.py
-│   ├── data_loader.py          # Carga de GeoPackages + detección raster
-│   ├── geotiff_overlay.py      # Conversión GeoTIFF → PNG RGBA para Folium
-│   └── styles.py               # Estilos de capas y popups
-│
-└── data/
-    └── pijao/                  # Datos por región
-        ├── puntos.gpkg         # Puntos críticos con FS_min, haz_num
-        ├── corredor.gpkg       # Geometría del corredor vial
-        ├── voronoi.gpkg        # Polígonos de zonificación
-        └── raster_amenaza.tif  # Raster de amenaza (clases 1-5)
-```
-<img width="1916" height="915" alt="image" src="https://github.com/user-attachments/assets/9f340b6e-f651-4bca-8874-4098c2fc231e" />
-
-
-## Uso
-
-### Ejecutar el dashboard
-
-```bash
-conda activate pijao_dashboard
-cd /path/to/pijao
+# Launch
 streamlit run Home.py
 ```
 
-El dashboard se abrirá en `http://localhost:8501`
+### Project Structure
 
-### Agregar una nueva región
-
-1. Crear directorio con el nombre de la región:
-```bash
-mkdir -p data/nueva_region
+```
+├── Home.py                 # Main entry point
+├── config.py               # Thresholds, colors, parameters
+├── pages/
+│   ├── 1_Estadisticas.py   # KPIs and statistics
+│   ├── 2_Mapa.py           # Interactive Folium map
+│   └── 3_Metodologia.py    # Technical documentation
+├── utils/
+│   ├── data_loader.py      # GeoPackage loading
+│   ├── geotiff_overlay.py  # Raster to Folium conversion
+│   └── styles.py           # Map styling
+└── data/
+    └── <region>/           # Data per corridor
+        ├── puntos.gpkg
+        ├── corredor.gpkg
+        ├── voronoi.gpkg
+        └── raster_amenaza.tif
 ```
 
-2. Copiar los 4 archivos requeridos:
-```bash
-cp puntos.gpkg data/nueva_region/
-cp corredor.gpkg data/nueva_region/
-cp voronoi.gpkg data/nueva_region/
-cp raster_amenaza.tif data/nueva_region/
-```
+---
 
-3. La región aparecerá automáticamente en el selector del sidebar.
+## Confidentiality Notice
 
-### Regenerar outputs (motor offline)
+> **Note**: This case study is anonymized. No client names, contract details, precise coordinates, or restricted documents are shared. Visualizations and descriptions are generalized for portfolio purposes. The methodology and technical approach are presented to demonstrate professional capabilities without compromising project confidentiality.
 
-```bash
-python3 mapa_amenaza_pijao.py
-```
+---
 
-Genera:
-- `voronoi_amenaza_pijao.gpkg` - Polígonos de zonificación
-- `raster_amenaza_pijao.tif` - Raster de amenaza
-- `mapa_amenaza_pijao.png` - Mapa estático
-- `informe_tecnico_amenaza_pijao.txt` - Reporte técnico
+## Technical References
 
-## Configuración
+- INVÍAS (2022). *Manual de Estabilidad de Taludes*. Instituto Nacional de Vías, Colombia.
+- SGC (2017). *Guía Metodológica para Estudios de Amenaza, Vulnerabilidad y Riesgo por Movimientos en Masa*. Servicio Geológico Colombiano.
+- Varnes, D.J. (1978). Slope Movement Types and Processes. *Transportation Research Board Special Report 176*.
 
-### Umbrales de clasificación
+---
 
-Editar `config.py` para ajustar umbrales:
+## License
 
-```python
-UMBRALES_AMENAZA = {
-    'version': 'matriz_proyecto_v1',
-    'bins': np.array([0.0, 1.0, 1.2, 1.5, 2.0, np.inf]),
-    'clases': [5, 4, 3, 2, 1],
-    # ...
-}
-```
+MIT License - See [LICENSE](LICENSE) for details.
 
-### Colores SGC
+---
 
-```python
-COLORES_SGC = {
-    1: '#1a9641',  # Verde oscuro - Muy Baja
-    2: '#a6d96a',  # Verde claro - Baja
-    3: '#ffffbf',  # Amarillo - Media
-    4: '#fdae61',  # Naranja - Alta
-    5: '#d7191c'   # Rojo - Muy Alta
-}
-```
-
-## Detección Automática de Raster
-
-El dashboard detecta automáticamente si el raster contiene:
-
-- **Valores discretos (1-5)**: Usa directamente como clases de amenaza
-- **Valores continuos (FS)**: Reclasifica en caliente usando los umbrales de `config.py`
-
-Esto permite flexibilidad en los inputs sin requerir preprocesamiento manual.
-
-## Notas Técnicas
-
-### Interpolación
-
-- **Método**: IDW (Inverse Distance Weighting) con power=2
-- **Campo interpolado**: `FS_min` (valor continuo, más defendible que interpolar categorías)
-- **Reclasificación**: Post-interpolación a clases discretas
-
-### Voronoi
-
-- Generación con puntos fantasma en esquinas del bbox para cerrar celdas de borde
-- Clipping al buffer del corredor (100m por defecto)
-
-### CRS
-
-- Datos internos: EPSG:3116 (MAGNA-SIRGAS Colombia Bogotá) para cálculos
-- Visualización: EPSG:4326 (WGS84) para Folium/Leaflet
-
-## Limitaciones
-
-1. **Resolución vs precisión**: El raster de 5m/pixel no implica precisión de 5m; depende de la densidad de puntos de muestreo
-2. **Interpolación**: IDW asume variación espacial suave; puede no capturar discontinuidades geológicas
-3. **Amenaza ≠ Riesgo**: Este sistema genera mapas de **amenaza** (H). El riesgo requiere: R = H × V × E
-
-## Dependencias
-
-| Paquete | Versión | Uso |
-|---------|---------|-----|
-| streamlit | ≥1.31.0 | Framework web |
-| streamlit-folium | ≥0.19.0 | Integración Folium |
-| folium | ≥0.15.0 | Mapas interactivos |
-| geopandas | ≥0.14.0 | Datos vectoriales |
-| rasterio | ≥1.3.9 | Datos raster |
-| pandas | ≥2.1.0 | Tablas |
-| numpy | ≥1.25.0 | Cálculos |
-| Pillow | ≥10.0.0 | Procesamiento de imágenes |
-
-## Licencia
-
-Proyecto desarrollado para el Consorcio Puntos Críticos - Análisis de riesgo vial, Quindío, Colombia.
-
-## Contacto
-
-Para soporte técnico o preguntas sobre la metodología, contactar al equipo de geotecnia del proyecto.
+*This repository showcases applied geoscience methodology for infrastructure hazard assessment. The code and analytical framework are provided for professional reference.*

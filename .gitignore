@@ -25,6 +25,7 @@ ENV/
 # Jupyter
 .ipynb_checkpoints/
 *.ipynb
+!multitemporal_analysis.ipynb
 
 # Data files (large binaries)
 *.tif
@@ -45,7 +46,9 @@ ENV/
 *.txt
 !requirements.txt
 !README*.md
-!CLAUDE.md
+!LICENSE
+!assets/
+!assets/**
 
 # OS
 .DS_Store
